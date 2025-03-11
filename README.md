@@ -21,7 +21,7 @@ If you find this work useful, please cite our paper:
   author       = {Michael Ito and Danai Koutra and Jenna Wiens},
   title        = {Understanding GNNs and Homophily in Dynamic Node Classification},
   booktitle    = {International Conference on Artificial Intelligence and Statistics},
-  organization={PMLR},
+  organization = {PMLR},
   year         = {2025},
 }
 ```
