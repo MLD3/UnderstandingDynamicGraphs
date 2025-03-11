@@ -6,7 +6,7 @@
    ```bash
    source generate_graphs.sh
    ```
-2. Once the datasets are downloaded and preprocessed, use the following command to train models and save results to the `evaluation` directory.
+2. Once the datasets are downloaded and preprocessed, in the `root` directory, use the following command to train models and save results to the `evaluation` directory.
    ```bash
    source search.sh
    ```
