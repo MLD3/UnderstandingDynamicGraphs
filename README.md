@@ -2,7 +2,7 @@
 [AISTATS 2025] Understanding GNNs and Homophily in Dynamic Node Classification
 
 ## Instructions for Reproducibility
-1. In the `generation` directory, use the following command to download and preprocess datasets from PyTorch Geometric:
+1. In the `generation` directory, use the following command to download and preprocess datasets:
    ```bash
    source generate_graphs.sh
    ```
