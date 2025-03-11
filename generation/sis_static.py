@@ -4,7 +4,6 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 from matplotlib import pyplot as plt
 
-sys.path.append('/data3/home/mbito/project_dynamic_graphs/tensorflow/evaluation')
 import utils
 
 class SIStatic(): 
