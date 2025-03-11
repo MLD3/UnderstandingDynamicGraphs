@@ -7,17 +7,14 @@ import argparse
 import os
 import scipy
 
-import sys
-sys.path.append('/data3/home/mbito/project_dynamic_graphs/tensorflow/models')
-
 # import custom modules
-from gcn import *
-from gin import *
-from sgc import *
-from gat import *
-from gcn2 import *
-from gsage import *
-from faconv import *
+from models.gcn import *
+from models.gin import *
+from models.sgc import *
+from models.gat import *
+from models.gcn2 import *
+from models.gsage import *
+from models.faconv import *
 
 from generator import generator
 
@@ -85,3 +82,5 @@ if __name__ == '__main__':
     with open(os.path.join(save_path, f'{mtype}_results_{idx}.pkl'), 'wb') as file: 
         pkl.dump((performance, args), file)
         
+
+
