@@ -9,11 +9,9 @@ import sys
 import os
 
 # import custom modules
-sys.path.append('/data3/home/mbito/project_dynamic_graphs/tensorflow/evaluation')
 from sis_static import SIStatic
-from sis_dynamic import SIDynamic
 
-def generate_dataset(g_train, g_valid, g_test, exp_name='sis', data_path='/data1/mbito/dynamic_graphs_tensorflow/'):
+def generate_dataset(g_train, g_valid, g_test, exp_name='sis', data_path='../data_proc/'):
     
     data_path = os.path.join(data_path, exp_name)
     if not os.path.exists(data_path):
@@ -201,7 +199,7 @@ if __name__ == '__main__':
     graph_name = args.graph_name
     
     # set the device
-    tf.config.set_visible_devices(tf.config.list_physical_devices('GPU')[gpu], 'GPU') 
+    # tf.config.set_visible_devices(tf.config.list_physical_devices('GPU')[gpu], 'GPU') 
     
     if real == -1: 
         g_train = []
@@ -223,16 +221,14 @@ if __name__ == '__main__':
                           1: {'path': 'email-Eu-core-temporal.txt', 'window_size': 5000},
                           2: {'path': 'sx-mathoverflow.txt', 'window_size': 12000}, 
                           3: {'path': 'soc-sign-bitcoinalpha.csv', 'window_size': 100},
-                          4: {'path': 'soc-sign-bitcoinotc.csv', 'window_size': 1000},
-                          5: {'path': 'soc-redditHyperlinks-body.tsv', 'window_size': 10000},
-                          6: {'path': 'soc-redditHyperlinks-title.tsv', 'window_size': 10000}}
+                          4: {'path': 'soc-sign-bitcoinotc.csv', 'window_size': 1000}}
 
         if real in [0, 1, 2]:
-            edges = np.loadtxt(f'/data1/mbito/dynamic_graphs_social/{dataset_params[real]["path"]}')
+            edges = np.loadtxt(f'../data_raw/{dataset_params[real]["path"]}')
         elif real in [3, 4]:
-            edges = np.genfromtxt(f'/data1/mbito/dynamic_graphs_social/{dataset_params[real]["path"]}', delimiter=',')[:, [0, 1, 3]]
+            edges = np.genfromtxt(f'../data_raw/{dataset_params[real]["path"]}', delimiter=',')[:, [0, 1, 3]]
         elif real in [5, 6]:
-            edges = pd.read_csv(f'/data1/mbito/dynamic_graphs_social/{dataset_params[real]["path"]}', delimiter='\t')
+            edges = pd.read_csv(f'../data_raw/{dataset_params[real]["path"]}', delimiter='\t')
             raise NotImplementedError()
 
         graphs = create_dynamic_graph(edges, window_size=window_size)
@@ -246,3 +242,7 @@ if __name__ == '__main__':
             g_test += SIDynamic(graphs, inf_alpha=inf_alpha, inf_beta=inf_beta, sus_alpha=sus_alpha, sus_beta=sus_beta).graphs[:20]
 
         generate_dataset(g_train, g_valid, g_test, exp_name=f'si_{graph_name}_{runs}r_{len(graphs)}t')
+
+
+
+
